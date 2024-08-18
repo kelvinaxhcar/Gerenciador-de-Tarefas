@@ -23,9 +23,9 @@ public class TeamController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delet([FromRoute] int id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        _repositoryTeam.DeleteAsync(id);
+        await _repositoryTeam.DeleteAsync(id);
         return Ok();
     }
 
@@ -37,16 +37,16 @@ public class TeamController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var teams = _repositoryTeam.GetAllAsync();
+        var teams = await _repositoryTeam.GetAllAsync();
         return Ok(teams);
     }
 
     [HttpPatch("{id}")]
-    public IActionResult Edit([FromRoute] int id, [FromBody] TeamDTO teamDTO)
+    public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] TeamDTO teamDTO)
     {
-        _repositoryTeam.EditAsync(id, teamDTO);
+        await _repositoryTeam.EditAsync(id, teamDTO);
         return Ok();
     }
 }
