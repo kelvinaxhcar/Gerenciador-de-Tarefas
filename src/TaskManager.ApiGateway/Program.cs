@@ -1,7 +1,6 @@
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore;
 
-namespace OcelotApiGw
+namespace TaskManager.ApiGateway
 {
     public class Program
     {

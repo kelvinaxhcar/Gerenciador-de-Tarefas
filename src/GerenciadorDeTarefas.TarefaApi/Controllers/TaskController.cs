@@ -1,43 +1,50 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TaskManager.TaskApi.Domain.DTO;
+using TaskManager.TaskApi.Infra.Repository;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+namespace TaskManager.TaskApi.Controllers;
 
-namespace TaskManager.TaskApi.Controllers
+[Route("api/[controller]")]
+[ApiController]
+public class TaskController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TaskController : ControllerBase
+    private readonly TaskRepository _taskRepository;
+
+    public TaskController(TaskRepository taskRepository)
     {
-        // GET: api/<TaskController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        _taskRepository = taskRepository;
+    }
 
-        // GET api/<TaskController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        return Ok(await _taskRepository.GetAllAsync());
+    }
 
-        // POST api/<TaskController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get([FromRoute] int id)
+    {
+        return Ok(await _taskRepository.GetByIdAsync(id));
+    }
 
-        // PUT api/<TaskController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+    [HttpPost("team/{teamId}")]
+    public async Task<IActionResult> Post([FromRoute] int teamId, [FromBody] TaskDTO taskDTO)
+    {
+        await _taskRepository.CreateAsync(teamId,taskDTO);
+        return Created();
+    }
 
-        // DELETE api/<TaskController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Put([FromRoute] int id, [FromBody] TaskDTO taskDTO)
+    {
+        await _taskRepository.EditAsync(id, taskDTO);
+        return Ok();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> Delete([FromRoute] int id)
+    {
+        await _taskRepository.DeleteAsync(id);
+        return Ok();
     }
 }

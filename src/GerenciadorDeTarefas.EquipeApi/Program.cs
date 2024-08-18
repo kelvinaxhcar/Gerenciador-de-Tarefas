@@ -3,11 +3,14 @@ using Microsoft.EntityFrameworkCore;
 using TaskManager.TeamApi.Domain.Migrations;
 using TaskManager.TeamApi.Infra.DB;
 using TaskManager.TeamApi.Infra.Repository;
+using ConfigurationManager = System.Configuration.ConfigurationManager;
 
 var builder = WebApplication.CreateBuilder(args);
 
+string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -19,7 +22,7 @@ builder.Services
     .AddFluentMigratorCore()
     .ConfigureRunner(rb => rb
         .AddSqlServer()
-        .WithGlobalConnectionString(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .WithGlobalConnectionString(connectionString)
         .ScanIn(typeof(_2024081501_create_team_table).Assembly).For.Migrations()
     )
     .AddLogging(lb => lb.AddFluentMigratorConsole());
