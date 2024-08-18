@@ -1,6 +1,6 @@
 using FluentMigrator.Runner;
-using GerenciadorDeTarefas.EquipeApi.Dominio.Migrations;
 using Microsoft.EntityFrameworkCore;
+using TaskManager.TeamApi.Domain.Migrations;
 using TaskManager.TeamApi.Infra.DB;
 using TaskManager.TeamApi.Infra.Repository;
 
@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<RepositoryTeam>();
+builder.Services.AddScoped<TeamRepository>();
 
 builder.Services
     .AddFluentMigratorCore()

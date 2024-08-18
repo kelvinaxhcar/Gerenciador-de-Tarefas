@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskManager.TeamApi.Domain"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.TeamApi.Infra", "TaskManager.TeamApi.Infra\TaskManager.TeamApi.Infra.csproj", "{D1F80891-17F7-4E2B-9713-A4759B656DAC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.TeamApi.Test", "TaskManager.TeamApi.Test\TaskManager.TeamApi.Test.csproj", "{38773348-7840-42EF-8195-DAD9835AAF00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{D1F80891-17F7-4E2B-9713-A4759B656DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1F80891-17F7-4E2B-9713-A4759B656DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1F80891-17F7-4E2B-9713-A4759B656DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38773348-7840-42EF-8195-DAD9835AAF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38773348-7840-42EF-8195-DAD9835AAF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38773348-7840-42EF-8195-DAD9835AAF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38773348-7840-42EF-8195-DAD9835AAF00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{52B1570A-85ED-4975-80FF-C16ABE3EA39A} = {4CAED5EB-F7B7-43D6-AAFC-423AE9ACF53A}
 		{5368141A-A828-4A6B-9550-9F56C6E5A637} = {8AFF73DA-6B67-4AD4-8507-CAAAAC7A9A73}
 		{D1F80891-17F7-4E2B-9713-A4759B656DAC} = {8AFF73DA-6B67-4AD4-8507-CAAAAC7A9A73}
+		{38773348-7840-42EF-8195-DAD9835AAF00} = {8AFF73DA-6B67-4AD4-8507-CAAAAC7A9A73}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9CE82F99-3731-4960-83BB-833848AD3724}
