@@ -1,5 +1,7 @@
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 using TaskManager.TeamApi.Domain.Migrations;
 using TaskManager.TeamApi.Infra.DB;
 using TaskManager.TeamApi.Infra.Repository;
@@ -24,6 +26,8 @@ builder.Services
     )
     .AddLogging(lb => lb.AddFluentMigratorConsole());
 
+builder.Services.AddOcelot();
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
@@ -41,5 +45,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
+await app.UseOcelot();
 
 app.Run();
