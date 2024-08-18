@@ -10,7 +10,12 @@
         }
       ],
       "UpstreamPathTemplate": "/team/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Delete", "Patch" ]
+      "UpstreamHttpMethod": [
+        "Get",
+        "Post",
+        "Delete",
+        "Patch"
+      ]
     }
   ],
   "GlobalConfiguration": {
