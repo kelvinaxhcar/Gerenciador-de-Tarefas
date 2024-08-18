@@ -10,5 +10,8 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Team> Team { get; set; } = null!;
+    public DbSet<Team> Team {
+        get;
+        set;
+    } = null!;
 }

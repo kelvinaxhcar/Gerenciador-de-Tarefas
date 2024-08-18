@@ -22,8 +22,8 @@ public class TeamRepositoryTests : BaseTest
         await repository.CreateAsync(team);
 
         var teams = await context
-            .Team
-            .ToListAsync();
+                    .Team
+                    .ToListAsync();
         Assert.Single(teams);
     }
 
@@ -48,8 +48,8 @@ public class TeamRepositoryTests : BaseTest
         await repository.DeleteAsync(team.Id);
 
         var teams = await context
-           .Team
-           .ToListAsync();
+                    .Team
+                    .ToListAsync();
         Assert.Empty(teams);
     }
 
@@ -146,9 +146,9 @@ public class TeamRepositoryTests : BaseTest
         });
 
         var team = await context
-            .Team
-            .Where(x=> x.Id == team2.Id)
-            .FirstOrDefaultAsync();
+                   .Team
+                   .Where(x=> x.Id == team2.Id)
+                   .FirstOrDefaultAsync();
 
         Assert.NotNull(team);
         Assert.Equal("Test3", team.Name);

@@ -8,9 +8,9 @@ public class _2024081501_create_team_table : Migration
     public override void Up()
     {
         Create.Table("Team")
-            .WithColumn("Id").AsInt32().PrimaryKey().Identity()
-            .WithColumn("Name").AsString().NotNullable()
-            .WithColumn("Description").AsString().NotNullable();
+        .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+        .WithColumn("Name").AsString().NotNullable()
+        .WithColumn("Description").AsString().NotNullable();
     }
 
     public override void Down()
