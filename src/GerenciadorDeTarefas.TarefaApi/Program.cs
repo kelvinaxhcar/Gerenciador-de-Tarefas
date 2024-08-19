@@ -1,6 +1,7 @@
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
 using TaskManager.TaskApi.Domain.Migrations;
+using TaskManager.TaskApi.Domain.Services;
 using TaskManager.TaskApi.Infra.DB;
 using TaskManager.TaskApi.Infra.Repository;
 using ConfigurationManager = System.Configuration.ConfigurationManager;
@@ -17,6 +18,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<TaskRepository>();
+builder.Services.AddScoped<TaskService>();
 
 builder.Services
     .AddFluentMigratorCore()

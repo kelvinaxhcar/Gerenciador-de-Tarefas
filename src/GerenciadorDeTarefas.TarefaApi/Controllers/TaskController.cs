@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TaskManager.TaskApi.Domain.DTO;
-using TaskManager.TaskApi.Infra.Repository;
+using TaskManager.TaskApi.Domain.Services;
 
 namespace TaskManager.TaskApi.Controllers;
 
@@ -8,43 +8,43 @@ namespace TaskManager.TaskApi.Controllers;
 [ApiController]
 public class TaskController : ControllerBase
 {
-    private readonly TaskRepository _taskRepository;
+    private readonly TaskService _taskService;
 
-    public TaskController(TaskRepository taskRepository)
+    public TaskController(TaskService taskService)
     {
-        _taskRepository = taskRepository;
+        _taskService = taskService;
     }
 
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        return Ok(await _taskRepository.GetAllAsync());
+        return Ok(await _taskService.GetAllAsync());
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> Get([FromRoute] int id)
     {
-        return Ok(await _taskRepository.GetByIdAsync(id));
+        return Ok(await _taskService.GetByIdAsync(id));
     }
 
     [HttpPost("team/{teamId}")]
     public async Task<IActionResult> Post([FromRoute] int teamId, [FromBody] TaskDTO taskDTO)
     {
-        await _taskRepository.CreateAsync(teamId,taskDTO);
+        await _taskService.CreateAsync(teamId,taskDTO);
         return Created();
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> Put([FromRoute] int id, [FromBody] TaskDTO taskDTO)
     {
-        await _taskRepository.EditAsync(id, taskDTO);
+        await _taskService.EditAsync(id, taskDTO);
         return Ok();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        await _taskRepository.DeleteAsync(id);
+        await _taskService.DeleteAsync(id);
         return Ok();
     }
 }
