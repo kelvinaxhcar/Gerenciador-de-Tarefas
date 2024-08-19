@@ -22,7 +22,6 @@ public class TeamRepository
             Name = teamDTO.Name,
         });
         var id = await _context.SaveChangesAsync();
-        _context.Dispose();
         return id;
     }
 
@@ -37,7 +36,6 @@ public class TeamRepository
 
         _context.Team.Remove(team);
         await _context.SaveChangesAsync();
-        _context.Dispose();
         return true;
     }
 
@@ -48,7 +46,6 @@ public class TeamRepository
             .FirstOrDefaultAsync(x => x.Id == id)
             ?? throw new Exception($"Team not found by id {id}");
 
-        _context.Dispose();
         return team;
     }
 
@@ -58,7 +55,6 @@ public class TeamRepository
             .Team
             .ToListAsync();
 
-        _context.Dispose();
         return teams;
     }
 
@@ -72,7 +68,6 @@ public class TeamRepository
         teamFound.Name = teamDTO.Name;
         teamFound.Description = teamDTO.Description;
         await _context.SaveChangesAsync();
-        _context.Dispose();
         return true;
     }
 }

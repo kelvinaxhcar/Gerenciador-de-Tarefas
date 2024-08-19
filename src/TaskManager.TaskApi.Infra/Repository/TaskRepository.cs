@@ -23,7 +23,6 @@ public class TaskRepository
             Title = taskDTO.Titulo
         });
         var id = await _context.SaveChangesAsync();
-        _context.Dispose();
         return id;
     }
 
@@ -38,7 +37,6 @@ public class TaskRepository
 
         _context.Task.Remove(task);
         await _context.SaveChangesAsync();
-        _context.Dispose();
 
         return true;
     }
@@ -49,7 +47,6 @@ public class TaskRepository
             .Task
             .FirstOrDefaultAsync(x => x.Id == id)
             ?? throw new Exception($"Task not found by id {id}");
-        _context.Dispose();
         return task;
     }
 
@@ -58,7 +55,6 @@ public class TaskRepository
         var tasks = await _context
             .Task
             .ToListAsync();
-        _context.Dispose();
         return tasks;
     }
 
@@ -74,7 +70,6 @@ public class TaskRepository
         task.Completed = taskDTO.Concluida;
 
         await _context.SaveChangesAsync();
-        _context.Dispose();
 
         return true;
     }
