@@ -38,13 +38,13 @@ public class TaskController : ControllerBase
     public async Task<IActionResult> Put([FromRoute] int id, [FromBody] TaskDTO taskDTO)
     {
         await _taskService.EditAsync(id, taskDTO);
-        return Ok();
+        return NoContent();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         await _taskService.DeleteAsync(id);
-        return Ok();
+        return NoContent();
     }
 }

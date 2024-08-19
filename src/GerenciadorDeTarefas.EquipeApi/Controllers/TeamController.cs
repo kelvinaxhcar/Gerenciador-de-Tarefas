@@ -26,7 +26,7 @@ public class TeamController : ControllerBase
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         await _repositoryTeam.DeleteAsync(id);
-        return Ok();
+        return NoContent();
     }
 
     [HttpGet("{id}")]
@@ -43,10 +43,10 @@ public class TeamController : ControllerBase
         return Ok(teams);
     }
 
-    [HttpPatch("{id}")]
+    [HttpPut("{id}")]
     public async Task<IActionResult> Edit([FromRoute] int id, [FromBody] TeamDTO teamDTO)
     {
         await _repositoryTeam.EditAsync(id, teamDTO);
-        return Ok();
+        return NoContent();
     }
 }
