@@ -10,12 +10,7 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/team",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete"
-      ]
+      "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete"]
     },
     {
       "DownstreamPathTemplate": "/api/task",
@@ -27,12 +22,7 @@
         }
       ],
       "UpstreamPathTemplate": "/gateway/task",
-      "UpstreamHttpMethod": [
-        "Get",
-        "Post",
-        "Put",
-        "Delete"
-      ]
+      "UpstreamHttpMethod": ["Get", "Post", "Put", "Delete"]
     }
   ],
   "GlobalConfiguration": {
