@@ -21,7 +21,8 @@ public class TeamRepository
             Description = teamDTO.Description,
             Name = teamDTO.Name,
         });
-        return await _context.SaveChangesAsync();
+        var id = await _context.SaveChangesAsync();
+        return id;
     }
 
     public async Task<bool> DeleteAsync(int id)
@@ -40,17 +41,21 @@ public class TeamRepository
 
     public async Task<Team> GetByIdAsync(int id)
     {
-        return await _context
+        var team = await _context
             .Team
             .FirstOrDefaultAsync(x => x.Id == id)
             ?? throw new Exception($"Team not found by id {id}");
+
+        return team;
     }
 
     public async Task<List<Team>> GetAllAsync()
     {
-        return await _context
+        var teams = await _context
             .Team
             .ToListAsync();
+
+        return teams;
     }
 
     public async Task<bool> EditAsync(int id, TeamDTO teamDTO)
@@ -63,7 +68,6 @@ public class TeamRepository
         teamFound.Name = teamDTO.Name;
         teamFound.Description = teamDTO.Description;
         await _context.SaveChangesAsync();
-
         return true;
     }
 }
