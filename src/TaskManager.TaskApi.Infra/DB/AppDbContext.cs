@@ -9,5 +9,8 @@ public class AppDbContext : DbContext
     {
     }
 
-    public DbSet<Domain.Models.Task> Task { get; set; } = null!;
+    public DbSet<Domain.Models.Task> Task {
+        get;
+        set;
+    } = null!;
 }

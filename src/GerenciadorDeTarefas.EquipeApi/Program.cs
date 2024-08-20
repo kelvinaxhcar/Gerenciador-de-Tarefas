@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(connectionString));
+        options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -19,13 +19,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<TeamRepository>();
 
 builder.Services
-    .AddFluentMigratorCore()
-    .ConfigureRunner(rb => rb
-        .AddSqlServer()
-        .WithGlobalConnectionString(connectionString)
-        .ScanIn(typeof(_2024081501_create_team_table).Assembly).For.Migrations()
-    )
-    .AddLogging(lb => lb.AddFluentMigratorConsole());
+.AddFluentMigratorCore()
+.ConfigureRunner(rb => rb
+                 .AddSqlServer()
+                 .WithGlobalConnectionString(connectionString)
+                 .ScanIn(typeof(_2024081501_create_team_table).Assembly).For.Migrations()
+                )
+.AddLogging(lb => lb.AddFluentMigratorConsole());
 
 var app = builder.Build();
 

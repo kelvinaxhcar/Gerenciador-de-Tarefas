@@ -29,8 +29,8 @@ public class TaskRepository
     public async Task<bool> DeleteAsync(int id)
     {
         var task = await _context
-            .Task
-            .FirstOrDefaultAsync(x => x.Id == id);
+                   .Task
+                   .FirstOrDefaultAsync(x => x.Id == id);
 
         if (task is null)
             return false;
@@ -44,26 +44,26 @@ public class TaskRepository
     public async Task<Domain.Models.Task> GetByIdAsync(int id)
     {
         var task = await _context
-            .Task
-            .FirstOrDefaultAsync(x => x.Id == id)
-            ?? throw new Exception($"Task not found by id {id}");
+                   .Task
+                   .FirstOrDefaultAsync(x => x.Id == id)
+                   ?? throw new Exception($"Task not found by id {id}");
         return task;
     }
 
     public async Task<List<Domain.Models.Task>> GetAllAsync()
     {
         var tasks = await _context
-            .Task
-            .ToListAsync();
+                    .Task
+                    .ToListAsync();
         return tasks;
     }
 
     public async Task<bool> EditAsync(int id, TaskDTO taskDTO)
     {
         var task = await _context
-            .Task
-            .FirstOrDefaultAsync(x => x.Id == id)
-            ?? throw new Exception($"Task not found by id {id}");
+                   .Task
+                   .FirstOrDefaultAsync(x => x.Id == id)
+                   ?? throw new Exception($"Task not found by id {id}");
 
         task.Description = taskDTO.Description;
         task.Title = taskDTO.Titulo;

@@ -22,8 +22,8 @@ public class TaskRepositoryTests : BaseTest
         await repository.CreateAsync(1, task);
 
         var teams = await context
-            .Task
-            .ToListAsync();
+                    .Task
+                    .ToListAsync();
         Assert.Single(teams);
     }
 
@@ -48,8 +48,8 @@ public class TaskRepositoryTests : BaseTest
         await repository.DeleteAsync(task.Id);
 
         var tasks = await context
-           .Task
-           .ToListAsync();
+                    .Task
+                    .ToListAsync();
         Assert.Empty(tasks);
     }
 
@@ -146,9 +146,9 @@ public class TaskRepositoryTests : BaseTest
         });
 
         var task = await context
-            .Task
-            .Where(x => x.Id == task2.Id)
-            .FirstOrDefaultAsync();
+                   .Task
+                   .Where(x => x.Id == task2.Id)
+                   .FirstOrDefaultAsync();
 
         Assert.NotNull(task);
         Assert.Equal("Test3", task.Title);

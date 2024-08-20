@@ -28,8 +28,8 @@ public class TeamRepository
     public async Task<bool> DeleteAsync(int id)
     {
         var team = await _context
-            .Team
-            .FirstOrDefaultAsync(x => x.Id == id);
+                   .Team
+                   .FirstOrDefaultAsync(x => x.Id == id);
 
         if (team is null)
             return false;
@@ -42,9 +42,9 @@ public class TeamRepository
     public async Task<Team> GetByIdAsync(int id)
     {
         var team = await _context
-            .Team
-            .FirstOrDefaultAsync(x => x.Id == id)
-            ?? throw new Exception($"Team not found by id {id}");
+                   .Team
+                   .FirstOrDefaultAsync(x => x.Id == id)
+                   ?? throw new Exception($"Team not found by id {id}");
 
         return team;
     }
@@ -52,8 +52,8 @@ public class TeamRepository
     public async Task<List<Team>> GetAllAsync()
     {
         var teams = await _context
-            .Team
-            .ToListAsync();
+                    .Team
+                    .ToListAsync();
 
         return teams;
     }
@@ -61,9 +61,9 @@ public class TeamRepository
     public async Task<bool> EditAsync(int id, TeamDTO teamDTO)
     {
         var teamFound = await _context
-            .Team
-            .FirstOrDefaultAsync(x => x.Id == id)
-            ?? throw new Exception($"Team not found by id {id}");
+                        .Team
+                        .FirstOrDefaultAsync(x => x.Id == id)
+                        ?? throw new Exception($"Team not found by id {id}");
 
         teamFound.Name = teamDTO.Name;
         teamFound.Description = teamDTO.Description;
